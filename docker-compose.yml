@@ -10,5 +10,39 @@ services:
       - .:/app
     env_file:
       - ./env/.env
-    # command:
 
+  cmaker:
+    container_name: cmake
+    build: .
+    tty: true
+    working_dir: /app
+    volumes:
+      - .:/app
+    env_file:
+      - ./env/.env
+    command:
+      - /bin/bash
+      - -c
+      - |
+        cd test_cmake/build
+        cmake ..
+        cmake --build .
+        ./test_cmake
+
+  # conan:
+  #   container_name: conan
+  #   build: .
+  #   tty: true
+  #   working_dir: /app
+  #   volumes:
+  #     - .:/app
+  #   env_file:
+  #     - ./env/.env
+      # command:
+      # - /bin/bash
+      # - -c
+      # - |
+      #   cd test_cmake/build
+      #   cmake ..
+      #   cmake --build .
+      #   ./test_cmake
