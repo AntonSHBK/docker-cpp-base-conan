@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  cpp-master:
+    container_name: cpp-master
+    build: .
+    tty: true
+    working_dir: /app
+    volumes:
+      - .:/app
+    env_file:
+      - ./env/.env
+    # command:
+
