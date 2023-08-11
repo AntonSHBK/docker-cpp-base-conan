@@ -15,16 +15,16 @@ services:
     container_name: cmake
     build: .
     tty: true
-    working_dir: /app
+    working_dir: /app/test_cmake
     volumes:
-      - .:/app
+      - ./test_cmake:/app/test_cmake
     env_file:
       - ./env/.env
     command:
       - /bin/bash
       - -c
       - |
-        cd test_cmake/build
+        cd build
         cmake ..
         cmake --build .
         ./test_cmake
@@ -33,16 +33,13 @@ services:
   #   container_name: conan
   #   build: .
   #   tty: true
-  #   working_dir: /app
+  #   working_dir: /app/test_conan
   #   volumes:
-  #     - .:/app
+  #     - ./test_conan:/app/test_conan
   #   env_file:
   #     - ./env/.env
-      # command:
-      # - /bin/bash
-      # - -c
-      # - |
-      #   cd test_cmake/build
-      #   cmake ..
-      #   cmake --build .
-      #   ./test_cmake
+  #   command:
+  #     - /bin/bash
+  #     - -c
+  #     - |
+        

@@ -8,18 +8,21 @@ WORKDIR /app
 COPY . .
 
 # Install dependences
+
+
 RUN apk update && \
     apk upgrade && \
-    apk --update add \
+    apk add \
         gcc \
         g++ \
         build-base \
+        vim\
         cmake \
         bash \
         libstdc++ \
         cppcheck \
         py-pip && \
-        pip install conan && \
+        pip install conan && \        
     rm -rf /var/cache/apk/*
 
 # Set shell  console
